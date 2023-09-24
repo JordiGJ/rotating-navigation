@@ -8,8 +8,10 @@
 body {
   background-color: #333;
   overflow-x: hidden;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.btn-container {
+.hamburger-container {
   position: absolute;
   height: 200px;
   width: 200px;
@@ -19,22 +21,39 @@ body {
   border-radius: 50%;
   z-index: 10;
 }
-button {
+
+.container {
   position: relative;
-  top: 130px;
-  left: 115px;
+  top: 120px;
+  left: 120px;
   cursor: pointer;
-  background-color: transparent;
-  border: none;
-  font-family: inherit;
-  font-size: 1rem;
-  color: white;
-  text-transform: capitalize;
 }
-button:hover,
-button:focus {
-  outline: none;
+.line {
+  background-color: #eee;
+  width: 40px;
+  height: 5px;
+  border-radius: 25px;
 }
+#line1,
+#line3 {
+  transform-origin: left;
+  transition: transform 0.4s linear;
+}
+#line2 {
+  margin-block: 10px;
+  transition: opacity 0.4s linear;
+}
+.rotDown {
+  transform: rotate(-310deg);
+  transform: rotate(48.5deg);
+}
+.rotUp {
+  transform: rotate(-48.5deg);
+}
+.hide {
+  opacity: 0;
+}
+
 nav {
   position: absolute;
   bottom: 2rem;
@@ -52,18 +71,22 @@ ul {
 li {
   position: relative;
   height: 25px;
-  margin: 0.5rem 0;
+  margin-block: 0.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 110px;
+  cursor: pointer;
+  transition: transform 0.3s linear;
+}
+li:hover,
+li:focus {
+  transform: scale(1.1);
 }
 a {
   text-decoration: none;
   cursor: pointer;
   text-transform: uppercase;
   color: #fff;
-  cursor: pointer;
+  margin-left: 1rem;
 }
 
 img {

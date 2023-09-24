@@ -1,10 +1,29 @@
 // get elements
-const btn = document.querySelector('button');
 const section = document.querySelector('section');
 const lis = document.querySelectorAll('li');
 const nav = document.querySelector('nav');
+const lineContainer = document.querySelector('.container');
+const lines = document.querySelectorAll('.line');
+
+// add id to each line
+lines.forEach((line, index) => (line.id = 'line' + Number(index + 1)));
 
 // functions
+
+const handleLinesClick = () => {
+  lines.forEach(line => {
+    if (line.id === 'line1') {
+      line.classList.toggle('rotDown');
+    }
+    if (line.id === 'line2') {
+      line.classList.toggle('hide');
+    }
+    if (line.id === 'line3') {
+      line.classList.toggle('rotUp');
+    }
+  });
+  translate();
+};
 
 const translate = () => {
   section.classList.toggle('showNav');
@@ -12,7 +31,7 @@ const translate = () => {
 };
 
 // position elements inside a group of elements at same distance from each other from the left
-const positionLis = (elementsGroup, amountPx) => {
+const positionEls = (elementsGroup, amountPx) => {
   elementsGroup.forEach((el, index) => {
     const currentPosition = parseFloat(window.getComputedStyle(el).left);
     const left = index * amountPx;
@@ -21,7 +40,7 @@ const positionLis = (elementsGroup, amountPx) => {
 };
 
 // eventListeners
-btn.addEventListener('click', translate);
+lineContainer.addEventListener('click', handleLinesClick);
 
 // init
-positionLis(lis, 15);
+positionEls(lis, 15);
